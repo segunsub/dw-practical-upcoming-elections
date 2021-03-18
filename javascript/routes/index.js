@@ -7,14 +7,15 @@ const { response } = require('express');
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Find My Election', states: us_states });
 });
+// Date format function to help simplify the date.
 function dateFormat(input){
   return new Date(input).toDateString()
 }
+/* Post Search Page */
 router.post("/search", (req, res) => {
-  // console.log(req)
+  //Fetch to the Api
   apiFetch(req.body.state,req.body.city)
   .then(response => {
-    // console.log(response[0]["district-divisions"])
     response.forEach(data => {
       let newDate = dateFormat(data.date)
       let votingmethods = data['district-divisions'][0]['voting-methods']
