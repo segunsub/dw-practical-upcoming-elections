@@ -41,3 +41,9 @@ input:focus {
 button {
   margin-left: .5em;
 }
+
+/* Elections Information Page */
+.date_type {
+  display: flex;
+  justify-content: space-between;
+}
