@@ -7,7 +7,14 @@
             <h2>Date: {{date}}</h2>
         </div>
      
-            <h4>Voting Methods: {{voting_Options}}</h4>
+          <h3>Voting Methods:</h3>
+            <ul class="voting_methods">
+  
+            {{#each method}}
+               <li>{{this}}</li>
+               <br>
+            {{/each}}
+            </ul>
         
         <a href="{{polling_place_url}}" alt="polling place link" target="_blank">Find Your Polling Place</a> 
         <br><br>

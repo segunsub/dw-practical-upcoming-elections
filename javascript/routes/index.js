@@ -19,16 +19,32 @@ router.post("/search", (req, res) => {
     response.forEach(data => {
       let newDate = dateFormat(data.date)
       let votingmethods = data['district-divisions'][0]['voting-methods']
-      let voting_Choices = ''
+      let voting_obj =  {
+        method: []
+      }
       votingmethods.forEach(choice => {
-        voting_Choices += choice.type + ' '
+        choice.type = choice.type.replace(choice.type[0], choice.type[0].toUpperCase())
+        voting_obj.method.push(choice.type)
+      }) 
+      Object.keys(data).forEach(link => {
+        if(data.source === undefined) {
+          if(link.includes('url')) {
+            data.source.notes = data[link]
+          }
+      }
       })
-      res.render('search', {description: `${data.description}`,date: `${newDate}`,type: `${data.type}`,authority_level: `${data['district-divisions'][0]['election-authority-level']}`,polling_place_url: `${data['polling-place-url']}`,sourcenotes: `${data.source.notes}`,voting_Options: `${voting_Choices}`}) 
-    } )
-    
+      res.render('search', {
+        title: 'Election Information',
+         description: `${data.description}`,
+         date: `${newDate}`,
+         type: `${data.type = data.type.replace(data.type[0], data.type[0].toUpperCase())}`,
+         authority_level: `${data['district-divisions'][0]['election-authority-level']}`,
+         polling_place_url: `${data['polling-place-url']}`,
+         sourcenotes: `${data.source.notes}`,
+         method: voting_obj.method
+        }) 
+    } )  
   }) 
-  
-
 })
 async function apiFetch(state,place) {
   state = state.toLowerCase()
