@@ -46,8 +46,15 @@ button {
 .date_type {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 .election_information {
   border-style: solid;
   padding: 9px;
+}
+.mail_Time_Range {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 91%;
 }

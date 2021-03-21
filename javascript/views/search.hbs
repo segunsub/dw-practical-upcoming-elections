@@ -9,11 +9,33 @@
      
           <h3>Voting Methods:</h3>
             <ul class="voting_methods">
-  
             {{#each method}}
                <li>{{this}}</li>
                <br>
             {{/each}}
+               {{#if early_link}}
+                  <div class="date_type">
+                       {{#if early_link_true}}
+                           <a href="{{early_voting_link}}" alt="early voting link" target="_blank">Early Voting</a>
+                        {{else}}
+                           <h4 style="margin: 0">Early Voting</h4>
+                         {{/if}}
+                        <div class="mail_Time_Range">
+                            <h4 style="margin: 0">Starts: {{early_start}}</h4>
+                            <h4 style="margin: 0">Ends: {{early_end}}</h4>
+                            <br>
+                        </div>
+                        <br><br>
+                  </div>
+               {{/if}}
+               {{#if mail_Vote}}
+                 <div class="date_type">
+                        <a href="{{by_Mail_Link}}" alt="early voting link" target="_blank">Mail Vote</a>
+                        {{#if mail_Endate}}
+                             <h4 style="margin: 0">Deadline: {{mail_Deadline}}</h4>
+                        {{/if}}
+                 </div>
+               {{/if}}
             </ul>
         
         <a href="{{polling_place_url}}" alt="polling place link" target="_blank">Find Your Polling Place</a> 
