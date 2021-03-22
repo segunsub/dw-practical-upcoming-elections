@@ -13,7 +13,7 @@ function renderElectionData(res,response) {
 response.forEach(data => {
     let newDate = helper.dateFormat(data.date)
     let votingmethods = data['district-divisions'][0]['voting-methods']
-    let voting_obj =  {
+    const voting_obj =  {
       method: []
     }
     helper.getElectionLinks(votingmethods,voting_obj,data) 
