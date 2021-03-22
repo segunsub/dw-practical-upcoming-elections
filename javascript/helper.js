@@ -26,8 +26,10 @@ const helper_Function = {
           voting_obj.method.push(choice.type)
         })
         Object.keys(data).forEach(link => {
-          if(data.source === undefined) {
-            if(link.includes('url')) {
+          if(data.source.notes === undefined) {
+            if(link.includes('website')){
+              data.source.notes = data[link]
+            }else if(link.includes('url')) {
               data.source.notes = data[link]
             }
         }
