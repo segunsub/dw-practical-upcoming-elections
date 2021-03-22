@@ -1,19 +1,24 @@
 <body>
 
     <div class="election_information">
+      {{!-- Shows information about the search results --}}
         <h1>{{description}}</h1>
+        {{!-- if statement to prevent block from rendering if information is unavailable --}}
         {{#if found}}
             <div class="date_type">
+              {{!-- type of election and level to simplify type of election --}}
                 <h2>Type Of Election: {{type}} ({{authority_level}})</h2>
                 <h2>Date: {{date}}</h2>
             </div>
         
               <h3>Voting Methods:</h3>
                 <ul class="voting_methods">
+                  {{!-- each voting method type are rendered --}}
                 {{#each method}}
                   <li>{{this}}</li>
                   <br>
                 {{/each}}
+                {{!-- checks for method info to be displayed accordingly --}}
                   {{#if early_link}}
                       <div class="date_type">
                           {{#if early_link_true}}
