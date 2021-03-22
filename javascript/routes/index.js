@@ -10,6 +10,12 @@ router.get('/', function(req, res, next) {
 
 //renderElectionData function for sending data to the html page.
 function renderElectionData(res,response) {
+  if(response.length == 0) {
+    let found = false
+    res.render('search', {
+      found,
+      description: 'Election Information Not Found'})
+  }
 response.forEach(data => {
     let newDate = helper.dateFormat(data.date)
     let votingmethods = data['district-divisions'][0]['voting-methods']

@@ -6,6 +6,7 @@ const helper_Function = {
       },
    //Function getElectionLinks adds keys to the object for easy access to voting choices.
     getElectionLinks(votingmethods,voting_obj,data) {
+        voting_obj.found = true
         votingmethods.forEach(choice => {
           if(choice.type === 'early-voting' && choice.start){
             voting_obj.early_link = true
@@ -45,6 +46,7 @@ const helper_Function = {
         place = place.toLowerCase()
         place = place.replace(/ /g, '_')
         place = place.replace(/[.*+\-?^${}()|[\]\\ 1-9]/g, '')
+        
         const requestOption = {
           headers:  {"Accept": "application/json"}
         }
@@ -61,6 +63,7 @@ const helper_Function = {
              type: `${data.type = data.type.replace(data.type[0], data.type[0].toUpperCase())}`,
              authority_level: `${data['district-divisions'][0]['election-authority-level']}`,
              polling_place_url: `${data['polling-place-url']}`,
+             found : voting_obj.found,
              sourcenotes: `${data.source.notes}`,
              method: voting_obj.method,
              early_link: voting_obj.early_link,
