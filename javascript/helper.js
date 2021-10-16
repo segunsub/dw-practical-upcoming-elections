@@ -54,7 +54,7 @@ const helper_Function = {
         const responsejson = await response.json()
         return responsejson ;
       },
-   //render the html with data from Api
+   //render the html with data from Api 
     renderHtml(res,data,newDate,voting_obj) {
         res.render('search', {
             title: 'Election Information',
